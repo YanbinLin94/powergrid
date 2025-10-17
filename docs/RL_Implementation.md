@@ -43,7 +43,7 @@ Install with a command like:
 pip install pandapower gymnasium stable-baselines3 torch lxml matplotlib pandas
 ```
 
-Ensure your virtual environment is active when running RL scripts.
+Ensure the virtual environment is active when running RL scripts.
 
 ---
 
@@ -52,7 +52,7 @@ Ensure your virtual environment is active when running RL scripts.
 The RL integration uses the existing powergrid environments, with wrappers to adapt to RL requirements:
 
 - **Environment creation**:  
-  You can instantiate environments like `IEEE13Env` or `IEEE34Env` with parameters, e.g. `episode_length`, `train` mode, etc.
+  Instantiate environments like `IEEE13Env` or `IEEE34Env` with parameters, e.g. `episode_length`, `train` mode, etc.
 
 - **Action space normalization**:  
   A wrapper `NormalizeActionWrapper` is used so the RL agent acts in `[-1, 1]`, while the environment rescales those actions to physical ranges (e.g. real power, reactive power, tap steps).
@@ -73,7 +73,7 @@ The RL integration uses the existing powergrid environments, with wrappers to ad
 Typical RL algorithms used are **SAC**, **PPO**, **TD3**, or **DDPG** depending on whether the action space is fully continuous or mixed (continuous + discrete taps). Some design decisions:
 
 - Use multi-layer MLPs (e.g. 2 hidden layers of 256 units) as policy and value networks rather than very deep networks, to reduce training cost.
-- For **mixed action spaces**, PPO can support multiple output heads (one for continuous setpoints, one for discrete taps). You may need to customize the policy class accordingly.
+- For **mixed action spaces**, PPO can support multiple output heads (one for continuous setpoints, one for discrete taps). May need to customize the policy class accordingly.
 - The agent training code should support vectorized environments (via `DummyVecEnv` or `SubprocVecEnv`) for throughput.
 
 ---
@@ -97,7 +97,7 @@ Typical RL algorithms used are **SAC**, **PPO**, **TD3**, or **DDPG** depending 
 - Use deterministic policy (no exploration noise).
 - Run multiple episodes in evaluation env.
 - Compute average and standard deviation of returns, count safety violations, log other metrics.
-- You may need to unnormalize or re-scale observations/actions if wrappers were used.
+- May need to unnormalize or re-scale observations/actions if wrappers were used.
 
 ---
 
