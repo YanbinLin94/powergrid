@@ -29,7 +29,7 @@ docs/
 
 ## 2. Dependencies & Setup
 
-Make sure your environment has the following key dependencies:
+Make sure the environment has the following key dependencies:
 
 - `pandapower` — power flow, network modeling  
 - `gymnasium` — environment interface  
